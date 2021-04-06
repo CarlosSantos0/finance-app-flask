@@ -47,14 +47,14 @@
          let day = document.createElement('span');
          day.textContent = i;
          // Generate Mark GREEN
-         if (i == 3 || i == 7 || i == 26) {
+         if (i == 3) {
              let mark = document.createElement('span');
              mark.className = 'mark-green';
              day.append(mark);
          }
 
          // Generate Mark RED
-         if (i == 5 || i == 8 || i == 18) {
+         if (i == 5) {
              let mark = document.createElement('span');
              mark.className = 'mark-red mark-green';
              day.append(mark);
