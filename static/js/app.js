@@ -2,16 +2,34 @@
 
      document.body.addEventListener('click', function(e) {
 
-
+// Open and Close Modal
          if (e.target.classList.contains('open-modal-1')) {
              e.preventDefault();
              document.querySelector('.modal-1').style.display = 'block';
          }
 
          if (e.target.classList.contains('close-modal')) {
-             e.target.parentElement.parentElement.style.display = 'none';
-
+             e.preventDefault();
+            document.querySelector('.modal').style.display = 'none';
          }
+
+// Manage the category buttons
+         if (e.target.classList.contains('button-label')){
+             e.preventDefault();
+          let buttons =  document.querySelectorAll('.button-label');
+        
+          for(let button of buttons){
+              button.classList.remove('button-selected');
+          }
+
+              e.target.classList.add('button-selected');
+let categoria = e.target.innerText;
+let ver = document.getElementById('category-checkbox').setAttribute('value',categoria );
+document.getElementById('category-checkbox').checked = true;
+
+
+        }
+
 
      });
 
@@ -26,7 +44,7 @@
          data: {
              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
              datasets: [{
-                 label: 'My First dataset',
+                 label: 'Balance on Last Months',
                  backgroundColor: 'rgb(255, 99, 132)',
                  borderColor: 'rgb(255, 99, 132)',
                  data: [0, 10, 5, 2, 20, 30, 45]

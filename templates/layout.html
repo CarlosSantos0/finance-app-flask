@@ -33,7 +33,7 @@
                     <li><a href=""><i class="bi bi-credit-card-2-back"></i>Credit</a></li>
                     <li><a href=""><i class="bi bi-credit-card-2-back"></i>Loan <span
                                 class="account-detail-green">($4,293)</span></a></li>
-                    <li><a href=""><i class="bi bi-credit-card-2-back"></i>Loan <span
+                    <li><a href=""><i class="bi bi-credit-card-2-back"></i>Debit <span
                                 class="account-detail-red">($24,005)</span></a></li>
                 </ul>
             </nav>
@@ -48,7 +48,7 @@
     <!-- Modals Windows -->
     <div class="modal-1 modal">
         <div class="modal-header">
-            <i class="bi bi-x close-modal"></i>
+            <i class="bi bi-x close-modal-icon close-modal"></i>
             <h2>Add</h2>
             <button class="button-primary-big">Income</button>
             <button class="button-medium">Expense</button>
@@ -57,6 +57,8 @@
             <form action="">
                 <section>
                     <h2>Category</h2>
+                    <input type="radio" name="category" id="category-checkbox" value="" style="display:none;">
+
                     <button class="button-label">Work</button>
                     <button class="button-label">Travel</button>
                     <button class="button-label">Shopping</button>
@@ -69,7 +71,7 @@
                         <div>
                             <div class="input flex-column">
                                 <h3>Amount</h3>
-                                <input type="number" name="amount" id="" placeholder="Amount">
+                                <input type="number" name="amount" id="" placeholder="Amount" required>
                                 <i class="bi bi-cash input-icon"></i>
                             </div>
                             <div class="input flex-column">
@@ -93,7 +95,11 @@
                     </div>
 
                     <div class="flex-column save-changes">
-                        <button type="submit" class="button-primary-big">Save Changes</button>
+                        <div>
+                            <button class="close-modal button-medium button-medium-red close-modal-2">Cancel</button>
+                            <button type="submit" class="button-primary-big">Save Changes</button>
+
+                        </div>
                         <span class="text-detail">Save and add another</span>
                     </div>
 

@@ -16,6 +16,7 @@
  body {
      color: #000000;
      font-family: Arial, Helvetica, sans-serif;
+     overflow-x: hidden;
  }
  
  .container {
@@ -366,33 +367,7 @@
  .add-icon:hover .add-details {
      display: block;
  }
- /* Responsive */
  
- @media only screen and (max-width: 1130px) {
-     header {
-         display: none;
-     }
-     main {
-         width: 100vw;
-         grid-template-columns: repeat(2, 1fr);
-         margin: 0px;
-         padding: 25px 15px;
-     }
-     main>* {
-         grid-column: 1/3;
-         padding: 0px;
-         margin: 0px;
-     }
-     .card {
-         min-width: 30px;
-     }
- }
- 
- @media only screen and (max-width: 380px) {
-     main {
-         padding: 10px 0px;
-     }
- }
  /* Modal Window */
  
  .modal {
@@ -408,7 +383,7 @@
      display: hidden;
  }
  
- .close-modal {
+ .close-modal-icon {
      font-size: 50px;
      position: absolute;
      left: 90%;
@@ -475,6 +450,15 @@
      color: white;
      font-weight: bold;
  }
+
+ .button-selected {
+     background-color: #2EC5CE;
+     border: none;
+     color: white;
+     font-weight: bold;
+ }
+ 
+
  /* Modal Section Information */
  
  .input {
@@ -528,3 +512,62 @@
  .save-changes>* {
      margin-top: 5px;
  }
+ 
+
+ /* Responsive */
+ 
+ @media only screen and (max-width: 1130px) {
+     header {
+         display: none;
+     }
+     main {
+         width: 100vw;
+         grid-template-columns: repeat(2, 1fr);
+         margin: 0px;
+         padding: 25px 15px;
+     }
+     main>* {
+         grid-column: 1/3;
+         padding: 0px;
+         margin: 0px;
+     }
+     .card {
+         min-width: 30px;
+     }
+ }
+ 
+ .button-medium-red{
+     background-color: #F39F9F;
+     color: white;
+     display: hidden;
+ }
+
+ .close-modal-2{
+     display: none;
+ }
+
+ @media only screen and (max-width: 380px) {
+     main {
+         padding: 10px 0px;
+     }
+
+    
+ }
+
+ @media (max-width: 1385px){
+  
+     .modal{
+        width: 100%;
+        top: 81%;
+    }
+
+    .close-modal-2{
+        display: inline-block;
+    }
+
+    .close-modal-icon{
+        display: none;
+    }
+
+ }
+
