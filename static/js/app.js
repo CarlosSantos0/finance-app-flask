@@ -6,12 +6,31 @@
          if (e.target.classList.contains('open-modal-1')) {
              e.preventDefault();
              document.querySelector('.modal-1').style.display = 'block';
+            }
+
+           if (e.target.classList.contains('open-modal-2')) {
+             e.preventDefault();
+             document.querySelector('.modal-2').style.display = 'block';
          }
 
          if (e.target.classList.contains('close-modal')) {
              e.preventDefault();
-            document.querySelector('.modal').style.display = 'none';
-         }
+            document.querySelector('.modal-1').style.display = 'none';
+            document.querySelector('.modal-2').style.display = 'none';
+
+        }
+
+        if(e.target.id == 'open-modal-1'){
+            document.querySelector('.modal-2').style.display = 'none';
+             document.querySelector('.modal-1').style.display = 'block';
+        }
+
+         if(e.target.id == 'open-modal-2'){
+            document.querySelector('.modal-2').style.display = 'block';
+             document.querySelector('.modal-1').style.display = 'none';
+        }
+
+
 
 // Manage the category buttons
          if (e.target.classList.contains('button-label')){
@@ -29,9 +48,9 @@ document.getElementById('category-checkbox').checked = true;
 
 
         }
-
-
      });
+
+
 
 
 

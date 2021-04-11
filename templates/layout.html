@@ -46,12 +46,13 @@
     </div>
 
     <!-- Modals Windows -->
+    <!-- Modal #1 -->
     <div class="modal-1 modal">
         <div class="modal-header">
             <i class="bi bi-x close-modal-icon close-modal"></i>
             <h2>Add</h2>
             <button class="button-primary-big">Income</button>
-            <button class="button-medium">Expense</button>
+            <button id="open-modal-2" class="button-medium">Expense</button>
         </div>
         <div class="modal-body">
             <form action="">
@@ -97,7 +98,7 @@
                     <div class="flex-column save-changes">
                         <div>
                             <button class="close-modal button-medium button-medium-red close-modal-2">Cancel</button>
-                            <button type="submit" class="button-primary-big">Save Changes</button>
+                            <button type="submit" class="button-primary-big">Save Income</button>
 
                         </div>
                         <span class="text-detail">Save and add another</span>
@@ -106,8 +107,72 @@
                 </section>
             </form>
         </div>
-
     </div>
+
+    <!-- Modal #2 -->
+    <div class="modal-2 modal">
+        <div class="modal-header">
+            <i class="bi bi-x close-modal-icon close-modal"></i>
+            <h2>Add</h2>
+            <button id="open-modal-1" class="button-medium-blue button-medium">Income</button>
+            <button class="button-primary-big-red button-primary-big">Expense</button>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <section>
+                    <h2>Category</h2>
+                    <input type="radio" name="category" id="category-checkbox" value="" style="display:none;">
+
+                    <button class="button-label">Work</button>
+                    <button class="button-label">Travel</button>
+                    <button class="button-label">Shopping</button>
+                    <button class="button-label">House</button>
+                    <button class="button-label">Bank</button>
+                </section>
+                <section class="">
+                    <h2>Information</h2>
+                    <div class="input-group">
+                        <div>
+                            <div class="input flex-column">
+                                <h3>Amount</h3>
+                                <input type="number" name="amount" id="" placeholder="Amount" required>
+                                <i class="bi bi-cash input-icon"></i>
+                            </div>
+                            <div class="input flex-column">
+                                <h3>Account</h3>
+                                <select name="" id="">
+                                    <option value="0">Select Account</option>
+                                    <option value="">Account 2</option>
+                                </select>
+                                <i class="bi bi-wallet2 input-icon"></i>
+                            </div>
+                            <div class="input flex-column">
+                                <h3>Date</h3>
+                                <input type="date" name="" id="">
+                                <i class="bi bi-calendar input-icon"></i>
+                            </div>
+                        </div>
+                        <div class="input flex-column detail-input">
+                            <h3>Details</h3>
+                            <input type="text" name="" id="" placeholder="Details">
+                        </div>
+                    </div>
+
+                    <div class="flex-column save-changes">
+                        <div>
+                            <button class="close-modal button-medium button-medium-red close-modal-2">Cancel</button>
+                            <button type="submit" class="button-primary-big-red button-primary-big">Save
+                                Expense</button>
+
+                        </div>
+                        <span class="text-detail">Save and add another</span>
+                    </div>
+
+                </section>
+            </form>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
