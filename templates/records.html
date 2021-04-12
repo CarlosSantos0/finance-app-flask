@@ -1,0 +1,91 @@
+{% extends 'layout.html' %} {% block body%}
+
+<div class="main-header">
+    <h1>Overview</h1>
+    <div>
+        <i class="bi bi-search search-icon"></i>
+        <i class="bi bi-plus add-icon">
+            <ul class="add-details">
+                <li class="open-modal-1"> <a class="open-modal-1">Add Income</a></li>
+                <li class="open-modal-2"> <a class="open-modal-2">Add Expense</a></li>
+                <li class="open-modal-3"> <a class="open-modal-3">Add Account</a></li>
+            </ul>
+        </i>
+
+    </div>
+</div>
+
+
+
+<div class="flex records-section">
+    <div class="labels-section ">
+        <div>
+            <h2>Filters</h2>
+            <h3>Accounts</h3>
+            <ul class="labels-list">
+                <li> <span class="label-circle"></span>Cash</li>
+                <li> <span class="label-circle"></span>Cash</li>
+                <li> <span class="label-circle"></span>Cash</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Categories</h3>
+            <ul class="labels-list">
+                <li> <span class="label-circle"></span>Cash</li>
+                <li> <span class="label-circle"></span>Cash</li>
+                <li> <span class="label-circle"></span>Cash</li>
+            </ul>
+        </div>
+    </div>
+    <div class="records-overview">
+        <div class="records-selectdate">
+            <span>From</span>
+            <input type="date" name="" id="">
+            <span>To</span>
+            <input type="date" name="" id="">
+        </div>
+        <div class="records">
+            <div class="records-summary">
+                <div class="flex-column">
+                    <span class="text-detail">Total Expense</span>
+                    <h2 class="bold">$120.0</h2>
+                </div>
+                <div class="flex-column">
+                    <span class="text-detail">Total Income</span>
+                    <h2 class="bold">$120.0</h2>
+                </div>
+                <div class="flex-column">
+                    <span class="text-detail">Net</span>
+                    <h2 class="bold">$120.0</h2>
+                </div>
+            </div>
+            <ul class="records-list">
+                <li class="item">
+                    <div class="transaction_item">
+                        <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
+                        <div class="flex-column ml-1">
+                            <h3>Shopping</h3>
+                            <span class="date">30.03.2021</span>
+                        </div>
+                    </div>
+                    <span class="money  red">10,450</span>
+                </li>
+                <li class="item">
+                    <div class="transaction_item">
+                        <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
+                        <div class="flex-column ml-1">
+                            <h3>Rent Payment</h3>
+                            <span class="date">06.03.2021</span>
+                        </div>
+                    </div>
+                    <span class="money">4,000</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

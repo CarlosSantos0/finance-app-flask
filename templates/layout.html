@@ -13,6 +13,8 @@
 
     <!-- CSS Styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Main.css') }}">
+
 </head>
 
 <body>
@@ -52,13 +54,13 @@
             <i class="bi bi-x close-modal-icon close-modal"></i>
             <h2>Add</h2>
             <button class="button-primary-big">Income</button>
-            <button id="open-modal-2" class="button-medium">Expense</button>
+            <button class="button-medium open-modal-2">Expense</button>
         </div>
         <div class="modal-body">
             <form action="">
                 <section>
                     <h2>Category</h2>
-                    <input type="radio" name="category" id="category-checkbox" value="" style="display:none;">
+                    <input type="radio" name="category" class="category-checkbox" value="" style="display:none;">
 
                     <button class="button-label">Work</button>
                     <button class="button-label">Travel</button>
@@ -114,14 +116,14 @@
         <div class="modal-header">
             <i class="bi bi-x close-modal-icon close-modal"></i>
             <h2>Add</h2>
-            <button id="open-modal-1" class="button-medium-blue button-medium">Income</button>
+            <button class="button-medium-blue button-medium open-modal-1">Income</button>
             <button class="button-primary-big-red button-primary-big">Expense</button>
         </div>
         <div class="modal-body">
             <form action="">
                 <section>
                     <h2>Category</h2>
-                    <input type="radio" name="category" id="category-checkbox" value="" style="display:none;">
+                    <input type="radio" name="category" class="category-checkbox" value="" style="display:none;">
 
                     <button class="button-label">Work</button>
                     <button class="button-label">Travel</button>
@@ -163,6 +165,47 @@
                             <button class="close-modal button-medium button-medium-red close-modal-2">Cancel</button>
                             <button type="submit" class="button-primary-big-red button-primary-big">Save
                                 Expense</button>
+
+                        </div>
+                        <span class="text-detail">Save and add another</span>
+                    </div>
+
+                </section>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Modal #3 -->
+    <div class="modal-3 modal">
+        <div class="modal-header">
+            <i class="bi bi-x close-modal-icon close-modal"></i>
+            <h2>New Account</h2>
+        </div>
+        <div class="modal-body">
+            <form action="/add_account" method="POST">
+                <section>
+                    <h2>Category</h2>
+                    <input type="radio" name="category" class="category-checkbox" value="" style="display:none;">
+
+                    <button class="button-label">Work</button>
+                    <button class="button-label">Travel</button>
+                    <button class="button-label">Shopping</button>
+                    <button class="button-label">House</button>
+                    <button class="button-label">Bank</button>
+                </section>
+                <section class="">
+                    <h2>Information</h2>
+                    <div class="input flex-column">
+                        <h3>Starting Amount</h3>
+                        <input type="number" name="amount" id="" placeholder="Starting amount" required>
+                        <i class="bi bi-cash input-icon"></i>
+                    </div>
+                    <div class="flex-column save-changes">
+                        <div>
+                            <button class="close-modal button-medium button-medium-red close-modal-2">Cancel</button>
+                            <button type="submit" class="button-primary-big">Save Account</button>
+
 
                         </div>
                         <span class="text-detail">Save and add another</span>

@@ -1,3 +1,5 @@
+from MySQLdb import NUMBER
+from MySQLdb.constants.FIELD_TYPE import DECIMAL
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask.globals import request
 from flask.helpers import flash
@@ -17,6 +19,20 @@ app.secret_key = 'mysecretkey'
 @app.route('/')
 def index():
     return render_template('dashboard.html')
+
+@app.route('/records')
+def records():
+    return render_template('records.html')
+
+@app.route('/add_account', methods=['POST'])
+def add_account():
+    if request.method == 'POST':
+        category = str(request.form['category'])
+        amount = str(request.form['amount'])
+        print(category, amount)
+        input()
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO ')
 
 
 @app.route('/add_income', methods=['POST'])

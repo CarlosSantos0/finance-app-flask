@@ -38,6 +38,10 @@ h3 {
   flex-direction: column;
 }
 
+.flex {
+  display: flex;
+}
+
 .ml-1 {
   margin-left: 15px;
 }
@@ -103,7 +107,7 @@ nav > ul > li > a > i {
 /* Main Content */
 
 main {
-  width: 95vw;
+  width: 100vw;
   background-color: var(--first-color);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
