@@ -1,9 +1,8 @@
-from MySQLdb import NUMBER
-from MySQLdb.constants.FIELD_TYPE import DECIMAL
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask.globals import request
 from flask.helpers import flash
 from flask_mysqldb import MySQL
+import os
 
 app = Flask(__name__)
 app.config['MYSQL_HOST'] = '127.0.0.1'
@@ -13,7 +12,8 @@ app.config['MYSQL_DB'] = 'financeapp'
 mysql = MySQL(app)
 
 
-app.secret_key = 'mysecretkey'
+app.secret_key = os.urandom(25)
+
 
 
 @app.route('/')
