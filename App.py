@@ -1,3 +1,4 @@
+from UserAuth import UserAuth
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask.globals import request
 from flask.helpers import flash
@@ -20,9 +21,44 @@ app.secret_key = os.urandom(25)
 def index():
     return render_template('dashboard.html')
 
+@app.route('/register', methods = ['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = str(request.form['name'])
+        email = str(request.form['email'])
+        password = str(request.form['password'])
+
+        Auth = UserAuth(mysql)
+
+        if(Auth.Register(name, email, password)):
+            flash('User Register With Sucess')
+        else:
+            print('Error')
+
+    return render_template('register.html')
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+   if request.method == 'POST':
+        email = str(request.form['email'])
+        password = str(request.form['password'])
+
+        Auth = UserAuth(mysql)
+
+        if(Auth.Login(email, password)):
+            flash('User Logged With Sucess')
+        else:
+            print('Error')
+      
+
+   return render_template('login.html')
+
+
 @app.route('/records')
 def records():
     return render_template('records.html')
+
+
 
 @app.route('/add_account', methods=['POST'])
 def add_account():

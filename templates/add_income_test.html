@@ -1,6 +1,13 @@
-{% extends 'layout.html' %} {% block body%} {%with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+{% extends 'layout.html' %}
+{% block body%}
+
+{%with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
 <p>{{ message }}</p>
-{%endfor%} {%endif%} {%endwith%}
+{%endfor%}
+{%endif%}
+{%endwith%}
 
 <form action="/add_income" method="POST">
 
