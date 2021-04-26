@@ -16,9 +16,12 @@ mysql = MySQL(app)
 app.secret_key = os.urandom(25)
 
 
-
 @app.route('/')
 def index():
+    return render_template('landing.html')
+
+@app.route('/dashboard')
+def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
@@ -31,11 +34,12 @@ def register():
         Auth = UserAuth(mysql)
 
         if(Auth.Register(name, email, password)):
-            flash('User Register With Sucess')
+            return redirect(url_for('dashboard'))
         else:
-            print('Error')
+            flash('Error')
 
     return render_template('register.html')
+
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -46,9 +50,9 @@ def login():
         Auth = UserAuth(mysql)
 
         if(Auth.Login(email, password)):
-            flash('User Logged With Sucess')
+            return redirect(url_for('dashboard'))
         else:
-            print('Error')
+            flash('Error')
       
 
    return render_template('login.html')

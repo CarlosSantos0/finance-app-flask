@@ -1,0 +1,61 @@
+{%extends 'landing_layout.html'%}
+{%block body%}
+<div class="row justify-content-end">
+    <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center px-5 landing-content" data-aos="fade-right"
+        data-aos-duration="800" data-aos-delay="600">
+        <h1 class="fw-bold">Manage Your Finances in a Smarter Way</h1><span class="my-3">All your finances in One Place,
+            See in what you spends and become a PRO with your Money Managment with our Personal Finance
+            Managment</span><a class="button-principal btn" role="button" href="/register">Try Now</a>
+    </div>
+    <div class="col-md-6 landing-image"><img data-aos="fade-left" data-aos-duration="900" data-aos-delay="200"
+            src="{{ url_for('static', filename='img/landing-image.svg') }}" width="668px"></div>
+</div>
+<section id="features" class="features-boxed">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Features </h2>
+            <p class="text-center">Know&nbsp; the features that will help you manage your personal finances easily and
+                simply<br>&nbsp;</p>
+        </div>
+        <div class="row justify-content-center features">
+            <div class="col-sm-6 col-md-5 col-lg-4 item">
+                <div class="box"><i class="fa fa-star icon"></i>
+                    <h3 class="name">Dashboard Personalized</h3>
+                    <p class="description">A complete view of everything you need to know about your finances<br></p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-4 item">
+                <div class="box"><i class="fa fa-mobile icon"></i>
+                    <h3 class="name">Available in all devices&nbsp;</h3>
+                    <p class="description">Web version and mobile version responsive so you can manage your finances
+                        from your favorite device<br></p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-4 item">
+                <div class="box"><i class="fa fa-list-alt icon"></i>
+                    <h3 class="name">Customizable </h3>
+                    <p class="description">Choose the functions interesting for you and customize as you want</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="newsletter" class="newsletter-subscribe">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Be the first to know the launch of our software</h2>
+            <p class="text-center">We'll send a notification all those people that suscribe to our suscription list</p>
+        </div>
+        <form class="d-flex justify-content-center flex-wrap" method="post">
+            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
+            <div class="mb-3"><button class="btn btn-primary suscription-button" type="submit">Subscribe </button></div>
+        </form>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init();
+    }, false);
+</script>
+
+{% endblock %}

@@ -1,31 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'landing_layout.html' %}
+{% block body%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 
-<body>
-    {%with message = get_flashed_messages()%}
-    {% if message %}
-    <h1>{{message[0]}}</h1>
-    {%endif%}
-    {%endwith%}
+<section class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form method="post" action="/register" id="RegisterForm">
+            <h2 class="text-center"><strong>Create</strong> an account.</h2>
 
-    <form action="/register" method="post">
-        <label for="">Correo</label>
-        <input type="email" name="email" id="">
-        <label for="">Password</label>
-        <input type="password" name="password" id="">
-        <label for="">Name</label>
-        <input type="text" name="name">
+            {%with message = get_flashed_messages()%}
+            {% if message %}
+            <span class="d-block text-center my-4 text-danger">This account already exists, use the login or try
+                again</span>
+            {%endif%}
+            {%endwith%}
 
-        <button type="submit">Enviar</button>
-    </form>
+            <div class="mb-3"><input type="text" class="form-control" name="name" placeholder="Name" required /></div>
+            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="mb-3"><input type="password" class="form-control password" name="password"
+                    placeholder="Password" required />
+            </div>
+            <div class="mb-3"><input type="password" class="form-control password" name="password-repeat"
+                    placeholder="Confirm Password" required />
+            </div>
+            <span class="d-none d-block text-center my-4 text-danger incorrect-password">The password is not the
+                same</span>
 
-</body>
 
-</html>
+            <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Sign Up</button></div><a
+                class="already" href="#">You already have an account? Login here.</a>
+        </form>
+    </div>
+</section>
+<script>
+
+    document.querySelector('#RegisterForm').addEventListener('submit', (e) => {
+        let passwords = document.querySelectorAll('.password');
+        if (passwords[0].value != passwords[1].value) {
+            document.querySelector('.incorrect-password').classList.remove('d-none');
+            e.preventDefault();
+
+
+        }
+
+    })
+
+</script>
+
+{%endblock%}

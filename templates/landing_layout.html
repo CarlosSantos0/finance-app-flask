@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Personal Finace App - Manage your finances smarter</title>
+    <meta property="og:image" content="{{ url_for('static', filename='img/landing-image.svg') }}">
+    <meta name="description"
+        content="Manage your finances in one place, and see in what you spend. Take control with our  software and manage your money  in a smarter way">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" sizes="2882x2501"
+        href="{{ url_for('static', filename='img/landing-image.svg') }}">
+    <link rel="icon" type="image/svg+xml" sizes="2882x2501"
+        href="{{ url_for('static', filename='img/landing-image.svg') }}">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Landing_Styles.css') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+        <div class="container"><a class="navbar-brand" href="/">Finance Managment Software</a><button
+                data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                    class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#newsletter">Newsletter</a></li>
+                    <li class="nav-item"></li>
+                </ul>
+                <span class="navbar-text actions"> <a class="btn mx-2 px-4 " role="button"
+                        href="/login">Login</a></span>
+                <span class="navbar-text actions"> <a class="btn btn-light action-button" role="button"
+                        href="/register">Register</a></span>
+
+            </div>
+        </div>
+    </nav>
+    <main>
+        {% block body%} {% endblock%}
+    </main>
+    <footer class="footer-basic">
+        <div class="social"></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#"></a></li>
+        </ul>
+        <p class="copyright">Copyright© 2021 - Developing with &hearts; by <a href="https://carlossantos.tech/"
+                target="blank">Carlos Santos</a> </p>
+    </footer>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</body>
+
+</html>
