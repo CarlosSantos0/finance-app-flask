@@ -40,7 +40,7 @@ document.body.addEventListener("click", function (e) {
     }
 
     e.target.classList.add("button-selected");
-    let categoria = e.target.innerText;
+    let categoria = e.target.value;
     let checkbox = document.querySelectorAll(".category-checkbox");
 
     checkbox.forEach(function (check) {
