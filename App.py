@@ -1,6 +1,7 @@
 from UserAuth import UserAuth
+from DataHelper import Helper as DataHelper
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask.globals import request
+from flask.globals import request, session
 from flask.helpers import flash
 from flask_mysqldb import MySQL
 import os
@@ -22,16 +23,23 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    Helper =  DataHelper(mysql)
+    CategoryRecord_Helper = Helper.Get_Category_Record()
+    
+    return render_template('dashboard.html', category_record = CategoryRecord_Helper)
+
+
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
+    
+    Auth = UserAuth(mysql)
+    if Auth.UserIsLogged(): return redirect(url_for('dashboard'))
     if request.method == 'POST':
         name = str(request.form['name'])
         email = str(request.form['email'])
         password = str(request.form['password'])
 
-        Auth = UserAuth(mysql)
 
         if(Auth.Register(name, email, password)):
             return redirect(url_for('dashboard'))
@@ -42,18 +50,21 @@ def register():
 
 
 @app.route('/login', methods = ['GET', 'POST'])
-def login():
+def login(): 
+    
+   Auth = UserAuth(mysql)
+
+   if Auth.UserIsLogged(): return redirect(url_for('dashboard'))
+  
    if request.method == 'POST':
         email = str(request.form['email'])
         password = str(request.form['password'])
-
-        Auth = UserAuth(mysql)
+       
 
         if(Auth.Login(email, password)):
             return redirect(url_for('dashboard'))
         else:
-            flash('Error')
-      
+            flash('Error')     
 
    return render_template('login.html')
 
@@ -86,6 +97,16 @@ def add_income():
         mysql.connection.commit()
         flash('Record registered')
         return redirect(url_for('index'))
+
+
+@app.route('/add_record', methods=['POST'])
+def add_record():
+    if request.method == 'POST':
+        x = request.form
+        print(x)
+        print('Ingresndo .....')
+
+    return 'klk'
 
 
 if __name__ == '__main__':

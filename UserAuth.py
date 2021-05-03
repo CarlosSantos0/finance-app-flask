@@ -1,5 +1,6 @@
 from flask import session
 
+
 class UserAuth():
 
     def __init__(self, database):
@@ -34,9 +35,23 @@ class UserAuth():
             self.database.connection.commit()
 
             if data:
-                session['user'] = data[0][1]
+                session['user'] = data[0][0]
                 print(session['user'])
                 return True
+
+    def UserIsLogged(self):
+            try:
+                if(session['user']):
+                    return True
+            except:
+                return False
+                
+    def SaveRecord(self,category, amount, account, date, details = ''): 
+            cur = self.database.connection.cursor()
+            cur.execute(
+                'INSERT INTO User (name, email, password) VALUES ("{}", "{}", "{}")'.format(name, email, password))
+            self.database.connection.commit()
+            return True
             
 
             
