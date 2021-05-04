@@ -46,12 +46,14 @@ class UserAuth():
             except:
                 return False
                 
-    def SaveRecord(self,category, amount, account, date, details = ''): 
+    def SaveRecord(self, category, amount, account, date, details): 
             cur = self.database.connection.cursor()
             cur.execute(
-                'INSERT INTO User (name, email, password) VALUES ("{}", "{}", "{}")'.format(name, email, password))
+                'INSERT INTO Record (user_id, account_id, category, amount, date, details) VALUES ({}, {}, {}, {}, "{}", "{}")'.format(session['user'], account, category, amount, date, details))
             self.database.connection.commit()
+            print(" se guardo")
             return True
-            
+
+   
 
             

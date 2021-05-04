@@ -16,3 +16,5 @@ class Helper():
         cur.execute('SELECT * FROM CategoryAccount')
         data = cur.fetchall()
         return data
+
+    

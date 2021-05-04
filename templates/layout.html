@@ -86,9 +86,9 @@
                             </div>
                             <div class="input flex-column">
                                 <h3>Account</h3>
-                                <select name="" id="">
+                                <select name="account" class="account" id="">
                                     <option value="0">Select Account</option>
-                                    <option value="">Account 2</option>
+                                    <option value="1">Account 2</option>
                                 </select>
                                 <i class="bi bi-wallet2 input-icon"></i>
                             </div>
@@ -132,11 +132,14 @@
                     <h2>Category</h2>
                     <input type="radio" name="category" class="category-checkbox" value="" style="display:none;">
 
-                    <button class="button-label">Work</button>
-                    <button class="button-label">Travel</button>
-                    <button class="button-label">Shopping</button>
-                    <button class="button-label">House</button>
-                    <button class="button-label">Bank</button>
+                    {%for category in category_record%}
+                    {%with value = category%}
+                    {%if value[2] == 1 %}
+                    <button class="button-label" value="{{value[0]}}">{{value[1]}}</button>
+                    {%endif%}
+                    {%endwith%}
+                    {%endfor%}
+
                 </section>
                 <section class="">
                     <h2>Information</h2>
@@ -149,7 +152,7 @@
                             </div>
                             <div class="input flex-column">
                                 <h3>Account</h3>
-                                <select name="" id="">
+                                <select name="account" id="">
                                     <option value="0">Select Account</option>
                                     <option value="">Account 2</option>
                                 </select>
@@ -193,13 +196,14 @@
             <form action="/add_account" method="POST" id="form-account">
                 <section>
                     <h2>Category</h2>
-                    <input type="radio" name="category" class="category-checkbox" value="" style="display:none;">
+                    <input type="radio" name="category" class="category-checkbox" value="" style="display: none;">
 
-                    <button class="button-label">Work</button>
-                    <button class="button-label">Travel</button>
-                    <button class="button-label">Shopping</button>
-                    <button class="button-label">House</button>
-                    <button class="button-label">Bank</button>
+                    {%for category in category_account%}
+                    {%with value = category%}
+                    <button class="button-label" value="{{value[0]}}">{{value[1]}}</button>
+                    {%endwith%}
+                    {%endfor%}
+
                 </section>
                 <section class="">
                     <h2>Information</h2>

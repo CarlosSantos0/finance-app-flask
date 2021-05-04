@@ -24,9 +24,7 @@ def index():
 @app.route('/dashboard')
 def dashboard():
     Helper =  DataHelper(mysql)
-    CategoryRecord_Helper = Helper.Get_Category_Record()
-    
-    return render_template('dashboard.html', category_record = CategoryRecord_Helper)
+    return render_template('dashboard.html', category_record = Helper.Get_Category_Record(), category_account = Helper.Get_Category_Account())
 
 
 
@@ -78,33 +76,27 @@ def records():
 @app.route('/add_account', methods=['POST'])
 def add_account():
     if request.method == 'POST':
-        category = str(request.form['category'])
-        amount = str(request.form['amount'])
-        print(category, amount)
-        input()
-        cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO ')
+        x = request.form
+        print(x)
+        print('Ingresndo .....')
+
+    return 'klk'
 
 
-@app.route('/add_income', methods=['POST'])
-def add_income():
-    if request.method == 'POST':
-        name = str(request.form['name'])
-        cur = mysql.connection.cursor()
-        # Temporaly
-        cur.execute(
-            'INSERT INTO record (name, price, person) VALUES ("{}", 300, "User")'.format(name))
-        mysql.connection.commit()
-        flash('Record registered')
-        return redirect(url_for('index'))
 
 
 @app.route('/add_record', methods=['POST'])
 def add_record():
     if request.method == 'POST':
-        x = request.form
-        print(x)
-        print('Ingresndo .....')
+        category = request.form['category']
+        amount = request.form['amount']
+        account = request.form['account']
+        date = request.form['date']
+        details = request.form['details']
+
+
+        Auth = UserAuth(MySQL)
+        Auth.SaveRecord(category, amount, account, date, details)
 
     return 'klk'
 
