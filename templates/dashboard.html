@@ -10,6 +10,8 @@
                 <li class="open-modal-1"> <a class="open-modal-1">Add Income</a></li>
                 <li class="open-modal-2"> <a class="open-modal-2">Add Expense</a></li>
                 <li class="open-modal-3"> <a class="open-modal-3">Add Account</a></li>
+                <li> <a href="/logout">Close Session</a></li>
+
             </ul>
         </i>
 
@@ -23,38 +25,35 @@
         <i class="bi bi-plus add-item"></i>
     </div>
     <div class="card-body">
+        {%for category in records%}
+        {%with value = category%}
+        {%if value[2] == 0 %}
         <div class="item">
             <div class="transaction_item">
                 <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
                 <div class="flex-column ml-1">
-                    <h3>Work Income</h3>
-                    <span class="date">04.03.2021</span>
+                    <h3>{{value[1]}}</h3>
+                    <span class="date">{{value[4]}}</span>
                 </div>
             </div>
-            <span class="money">30,000</span>
+            <span class="money">{{value[3]}}</span>
         </div>
-
+        {%endif%}
+        {%if value[2] == 1 %}
         <div class="item">
             <div class="transaction_item">
-                <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
+                <img src="{{ url_for('static', filename='img/icon-transaction2.png') }}" alt=""
+                    class="bg-red item-img ">
                 <div class="flex-column ml-1">
-                    <h3>Rent Payment</h3>
-                    <span class="date">06.03.2021</span>
+                    <h3>{{value[1]}}</h3>
+                    <span class="date">{{value[4]}}</span>
                 </div>
             </div>
-            <span class="money red">4,000</span>
+            <span class="money red">{{value[3]}}</span>
         </div>
-
-        <div class="item">
-            <div class="transaction_item">
-                <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
-                <div class="flex-column ml-1">
-                    <h3>Shopping</h3>
-                    <span class="date">30.03.2021</span>
-                </div>
-            </div>
-            <span class="money  red">10,450</span>
-        </div>
+        {%endif%}
+        {%endwith%}
+        {%endfor%}
 
     </div>
 </div>
@@ -73,7 +72,7 @@
             <div class=" transaction_item">
                 <i class="bi bi-cash-stack item-icon"></i>
                 <div class="flex-column ml-1">
-                    <h3 class="money-elegant bold">20,000</h3>
+                    <h3 class="money-elegant bold">{{simplereport[0]}}</h3>
                     <span class="text-detail">Worth</span>
                 </div>
             </div>
@@ -83,7 +82,7 @@
             <div class=" transaction_item">
                 <i class="bi bi-credit-card-2-back item-icon"></i>
                 <div class="flex-column ml-1">
-                    <h3 class="money-elegant bold">30,000</h3>
+                    <h3 class="money-elegant bold">{{simplereport[1]}}</h3>
                     <span class="text-detail">Spent</span>
                 </div>
             </div>
@@ -92,7 +91,7 @@
             <div class=" transaction_item">
                 <i class="bi bi-cash-stack item-icon"></i>
                 <div class="flex-column ml-1">
-                    <h3 class="money-elegant bold">123,000</h3>
+                    <h3 class="money-elegant bold">{{simplereport[2]}}</h3>
                     <span class="text-detail">Earned</span>
                 </div>
             </div>
@@ -104,7 +103,7 @@
 <!-- Scheduler Card -->
 <div class="card">`
     <div class="card-header">
-        <h2>Scheduler</h2>
+        <h2>Scheduler <span class="Working-Warning h3"> Still Working</span></h2>
         <i class="bi bi-plus add-item"></i>
     </div>
     <div class="card-body">
@@ -117,148 +116,6 @@
             <span class="day">Sat</span>
             <span class="day">Sun</span>
         </div>
-    </div>
-</div>
-
-<!-- Retirement Card -->
-<div id="retirement-card" class="card">`
-    <div class="card-header">
-        <h2>Retirement</h2>
-        <i class="bi bi-plus add-item"></i>
-    </div>
-    <div class="card-body">
-
-        <div class="report-item item mb-1">
-            <div class=" transaction_item">
-                <i class="bi bi-cash-stack item-icon"></i>
-                <div class="flex-column ml-1">
-                    <h3 class="money-elegant">2,000</h3>
-                    <span class="text-detail">Average Deposit</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="retirement-item-goal report-item item mb-1">
-            <div class=" transaction_item">
-                <i class="bi bi-credit-card-2-back item-icon"></i>
-                <div class="flex-column ml-1">
-                    <h3 class="money-elegant">12,000,000</h3>
-                    <span class="text-detail">Proyect value at Age 40</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Investment Card -->
-<div id="investment-card" class="card">`
-    <div class="card-header">
-        <h2>Investment</h2>
-        <i class="bi bi-plus add-item"></i>
-    </div>
-    <div class="card-body">
-
-        <div class="report-item item mb-1">
-            <div class=" transaction_item">
-                <i class="bi bi-cash-stack item-icon"></i>
-                <div class="flex-column ml-1">
-                    <h3 class="money-elegant money">221,000</h3>
-                    <span class="text-detail">Market Value</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="report-item item mb-1">
-            <div class=" transaction_item">
-                <div class="flex-column ml-1">
-                    <h3 class="money-elegant money">30,000</h3>
-                    <span class="text-detail">Cash Balance</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="investment-performance">
-            <h3>Investment Performance</h3>
-            <span class="text-green bold">38.49%</span>
-        </div>
-
-
-    </div>
-</div>
-
-
-
-<!-- Budget Card -->
-<div id="budget-card" class="card">`
-    <div class="card-header">
-        <h2>Budget</h2>
-        <i class="bi bi-plus add-item"></i>
-    </div>
-    <div class="card-body">
-        <div class="budget-title">
-            <div class="flex-column">
-                <h3>Income</h3>
-                <span class="text-detail">$5945 of $21291.3</span>
-            </div>
-            <div class="flex-column">
-                <h3 class="bold">1492,492$</h3>
-                <span class="text-detail">Over</span>
-            </div>
-        </div>
-        <span class="line-green"></span>
-        <div class="budget-title">
-            <div class="flex-column">
-                <h3>Expense</h3>
-                <span class="text-detail">$5945 of $21291.3</span>
-            </div>
-            <div class="flex-column">
-                <h3 class="bold">1492,492$</h3>
-                <span class="text-detail">Over</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="transaction_item">
-                <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
-                <div class="flex-column ml-1">
-                    <h3>Groceries</h3>
-                    <span class="text-detail">Food and Groceries</span>
-                </div>
-            </div>
-            <div class="flex-column">
-                <span class="money">35000</span>
-                <span class="text-detail">Available</span>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="transaction_item">
-                <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
-                <div class="flex-column ml-1">
-                    <h3>Groceries</h3>
-                    <span class="text-detail">Food and Groceries</span>
-                </div>
-            </div>
-            <div class="flex-column">
-                <span class="money">35000</span>
-                <span class="text-detail">Available</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Market Value Card -->
-<div id="investment-card" class="card">`
-    <div class="card-header">
-        <h2>Market Value</h2>
-        <i class="bi bi-plus add-item"></i>
-    </div>
-    <div class="card-body">
-        <!-- Macroaxis Widget Start -->
-        <div class="market-widget">
-            <script src="https://www.macroaxis.com/widgets/url.jsp?t=2&s=IXIC,GSPC,RUT"></script>
-        </div>
-        <!-- Macroaxis Widget End -->
     </div>
 </div>
 

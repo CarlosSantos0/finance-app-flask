@@ -184,11 +184,15 @@ main {
 }
 
 .item-img {
-  background-color: var(--second-color);
+  background-color: #2ecc71;
   border-radius: 50%;
   padding: 11px;
   width: 48px;
   font-size: 48px;
+}
+
+.bg-red {
+  background-color: #f39f9f;
 }
 
 .transaction_item {
@@ -556,6 +560,18 @@ input[type="text"] {
 
 .close-modal-2 {
   display: none;
+}
+
+.alert-field {
+  display: none;
+}
+
+.Working-Warning {
+  background-color: yellow;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 10px;
+  display: inline-block;
 }
 
 @media only screen and (max-width: 380px) {

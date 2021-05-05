@@ -9,6 +9,8 @@
                 <li class="open-modal-1"> <a class="open-modal-1">Add Income</a></li>
                 <li class="open-modal-2"> <a class="open-modal-2">Add Expense</a></li>
                 <li class="open-modal-3"> <a class="open-modal-3">Add Account</a></li>
+                <li><a href="/logout">Close Session</a></li>
+
             </ul>
         </i>
 
@@ -20,20 +22,17 @@
 <div class="flex records-section">
     <div class="labels-section ">
         <div>
-            <h2>Filters</h2>
+            <h2>Filters <span class="Working-Warning"> Still Working</span></h2>
             <h3>Accounts</h3>
             <ul class="labels-list">
-                <li> <span class="label-circle"></span>Cash</li>
-                <li> <span class="label-circle"></span>Cash</li>
                 <li> <span class="label-circle"></span>Cash</li>
             </ul>
         </div>
         <div>
             <h3>Categories</h3>
             <ul class="labels-list">
-                <li> <span class="label-circle"></span>Cash</li>
-                <li> <span class="label-circle"></span>Cash</li>
-                <li> <span class="label-circle"></span>Cash</li>
+                <li> <span class="label-circle"></span>Other</li>
+
             </ul>
         </div>
     </div>
@@ -43,43 +42,53 @@
             <input type="date" name="" id="">
             <span>To</span>
             <input type="date" name="" id="">
+            <span class="Working-Warning"> Still Working</span>
         </div>
         <div class="records">
             <div class="records-summary">
                 <div class="flex-column">
                     <span class="text-detail">Total Expense</span>
-                    <h2 class="bold">$120.0</h2>
+                    <h2 class="bold">{{summary[1]}}</h2>
                 </div>
                 <div class="flex-column">
                     <span class="text-detail">Total Income</span>
-                    <h2 class="bold">$120.0</h2>
+                    <h2 class="bold">{{summary[2]}}</h2>
                 </div>
                 <div class="flex-column">
                     <span class="text-detail">Net</span>
-                    <h2 class="bold">$120.0</h2>
+                    <h2 class="bold">{{summary[0]}}</h2>
                 </div>
             </div>
             <ul class="records-list">
-                <li class="item">
+                {%for category in records%}
+                {%with value = category%}
+                {%if value[2] == 0 %}
+                <div class="item">
                     <div class="transaction_item">
                         <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
                         <div class="flex-column ml-1">
-                            <h3>Shopping</h3>
-                            <span class="date">30.03.2021</span>
+                            <h3>{{value[1]}}</h3>
+                            <span class="date">{{value[4]}}</span>
                         </div>
                     </div>
-                    <span class="money  red">10,450</span>
-                </li>
-                <li class="item">
+                    <span class="money">{{value[3]}}</span>
+                </div>
+                {%endif%}
+                {%if value[2] == 1 %}
+                <div class="item">
                     <div class="transaction_item">
-                        <img src="{{ url_for('static', filename='img/icon-transaction.png') }}" alt="" class="item-img">
+                        <img src="{{ url_for('static', filename='img/icon-transaction2.png') }}" alt=""
+                            class="bg-red item-img">
                         <div class="flex-column ml-1">
-                            <h3>Rent Payment</h3>
-                            <span class="date">06.03.2021</span>
+                            <h3>{{value[1]}}</h3>
+                            <span class="date">{{value[4]}}</span>
                         </div>
                     </div>
-                    <span class="money">4,000</span>
-                </li>
+                    <span class="money red">{{value[3]}}</span>
+                </div>
+                {%endif%}
+                {%endwith%}
+                {%endfor%}
             </ul>
         </div>
     </div>

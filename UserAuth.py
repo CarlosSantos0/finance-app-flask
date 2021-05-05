@@ -11,7 +11,8 @@ class UserAuth():
             cur = self.database.connection.cursor()
             cur.execute(
                 'INSERT INTO User (name, email, password) VALUES ("{}", "{}", "{}")'.format(name, email, password))
-            self.database.connection.commit()
+            self.database.connection.commit()        
+            self.Login(email, password)    
             return True
         
 
@@ -36,7 +37,6 @@ class UserAuth():
 
             if data:
                 session['user'] = data[0][0]
-                print(session['user'])
                 return True
 
     def UserIsLogged(self):
@@ -51,8 +51,16 @@ class UserAuth():
             cur.execute(
                 'INSERT INTO Record (user_id, account_id, category, amount, date, details) VALUES ({}, {}, {}, {}, "{}", "{}")'.format(session['user'], account, category, amount, date, details))
             self.database.connection.commit()
-            print(" se guardo")
             return True
+
+    def SaveAccount(self, category, amount): 
+            cur = self.database.connection.cursor()
+            cur.execute('INSERT INTO Account (user_id ,category, amount) VALUES ({},{},{})'.format(session['user'], category, amount))
+            self.database.connection.commit()
+            return True
+
+
+
 
    
 

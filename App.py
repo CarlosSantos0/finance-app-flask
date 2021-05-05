@@ -23,8 +23,12 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
+    Auth = UserAuth(mysql)
+    if not Auth.UserIsLogged(): return redirect(url_for('login'))
     Helper =  DataHelper(mysql)
-    return render_template('dashboard.html', category_record = Helper.Get_Category_Record(), category_account = Helper.Get_Category_Account())
+
+    return render_template('dashboard.html', category_record = Helper.Get_Category_Record(), category_account = Helper.Get_Category_Account(), accounts = Helper.Get_Accounts(),
+    records = Helper.Get_Records()[0:5], simplereport = Helper.Generate_SimpleReport())
 
 
 
@@ -69,17 +73,21 @@ def login():
 
 @app.route('/records')
 def records():
-    return render_template('records.html')
+    Auth = UserAuth(mysql)
+    if not Auth.UserIsLogged(): return redirect(url_for('login'))
+    Helper = DataHelper(mysql)
+    
+    return render_template('records.html',records = Helper.Get_Records(), summary = Helper.Generate_SimpleReport(), category_record = Helper.Get_Category_Record(), category_account = Helper.Get_Category_Account(), accounts = Helper.Get_Accounts())
 
 
 
 @app.route('/add_account', methods=['POST'])
 def add_account():
     if request.method == 'POST':
-        x = request.form
-        print(x)
-        print('Ingresndo .....')
-
+        category = request.form['category']
+        amount = request.form['amount']
+        Auth = UserAuth(mysql)
+        Auth.SaveAccount(category, amount)
     return 'klk'
 
 
@@ -95,11 +103,15 @@ def add_record():
         details = request.form['details']
 
 
-        Auth = UserAuth(MySQL)
+        Auth = UserAuth(mysql)
         Auth.SaveRecord(category, amount, account, date, details)
 
     return 'klk'
 
+@app.route('/logout')
+def logout():
+    del session['user']
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

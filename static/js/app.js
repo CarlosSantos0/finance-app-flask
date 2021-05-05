@@ -28,6 +28,7 @@ document.body.addEventListener("click", function (e) {
     document.querySelector(".modal-1").style.display = "none";
     document.querySelector(".modal-2").style.display = "none";
     document.querySelector(".modal-3").style.display = "none";
+    location.reload();
   }
 
   // Manage the category buttons
@@ -57,13 +58,13 @@ var chart = new Chart(ctx, {
 
   // The data for our dataset
   data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Working"],
     datasets: [
       {
-        label: "Balance on Last Months",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
-        data: [0, 10, 5, 2, 20, 30, 45],
+        label: "Balance on Last Months - Still Working",
+        backgroundColor: "#2ecc71",
+        borderColor: "#2ecc71",
+        data: [0, 100],
       },
     ],
   },
